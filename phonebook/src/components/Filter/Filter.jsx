@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import actionsContacts from '../../redux/contacts/contacts-actions';
-import { getFilter } from '../../redux/contacts/contacts-selector';
-import PropTypes from "prop-types";
+import {getFilter} from '../../redux/contacts/contacts-selector';
 import s from "./Filter.module.css";
 
 
@@ -26,10 +25,4 @@ const Filter = () => {
   );
 };
 
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
 export default Filter;
-

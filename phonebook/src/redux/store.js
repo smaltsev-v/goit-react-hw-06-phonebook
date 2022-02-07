@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -10,9 +10,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import contactsReducer from './contacts/contacts-reducer';
 
-/* Убираем ошибку из консоли из-за Персистора */
+import contactsReducer from './contacts/contacts-reducer';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -22,7 +21,6 @@ const middleware = getDefaultMiddleware => [
   }),
 ];
 
-/* Настройки Персистора */
 
 const contactsPersistConfig = {
   key: 'contact',
@@ -30,7 +28,7 @@ const contactsPersistConfig = {
   blacklist: ['filter'],
 };
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     contacts: persistReducer(contactsPersistConfig, contactsReducer),
   },
@@ -38,6 +36,4 @@ const store = configureStore({
   devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store);
-
-export default { store, persistor };
+export const persistor = persistStore(store);

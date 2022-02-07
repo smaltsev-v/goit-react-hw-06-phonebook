@@ -1,25 +1,31 @@
-// import PropTypes from "prop-types";
-// import s from './ContactUser.module.css'
+import PropTypes from "prop-types";
+import s from './ContactUser.module.css';
+import { BiTrash } from "react-icons/bi";
 
 
-// const ContactUser = ({ id, name, number, onDeleteContacts }) => {
-//   return (
-//     <li className={s.contactItem}>
-//       <span className={s.name}>{name}</span>
-//       <span className={s.phone}>{number}</span>
-//       <button
-//         className={s.btnDelete}
-//         type="button"
-//         onClick={() => onDeleteContacts(id)}
-//       >
-//         Delete
-//       </button>
-//     </li>
-//   );
-// }
+const ContactUser = ({contact, onDeleteContacts}) => {
+  return (
+    <li className={s.contactItem}>
+      <span className={s.name}>{contact.name}</span>
+      <span className={s.phone}>{contact.number}</span>
+      
+      <BiTrash
+        fill="red"
+          type="button"
+          onClick={() => onDeleteContacts(contact.id)}
+        />
+     
+    </li>
+  );
+}
 
-// export default ContactUser;
+export default ContactUser;
 
-// ContactUser.propTypes = {
-//   onDeleteContacts: PropTypes.func.isRequired,
-// };
+ContactUser.propTypes = {
+  contact: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
+  onDeleteContacts: PropTypes.func.isRequired,
+};
